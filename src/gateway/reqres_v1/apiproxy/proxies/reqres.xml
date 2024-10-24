@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<ProxyEndpoint name="ReqresProxyEndpoint">
-   <Description>Reqres</Description>
+<ProxyEndpoint name="reqresProxyEndpoint">
+   <Description>reqres</Description>
    <FaultRules>
       <FaultRule name="SecurityFaultHandling">
          <Step>
@@ -34,34 +34,19 @@
             <Name>cf-set-log-variables</Name>
          </Step>
          <Step>
-            <Condition>(log.proxyVerb != "OPTIONS")</Condition>
-            <Name>cf-Generate-Message-Correlation-ID</Name>
-         </Step>
-         <Step>
-            <Name>SF-Proxy-Current-Flow-Name</Name>
-         </Step>
-         <Step>
             <Name>SF-Log-Preflow-Request</Name>
-         </Step>
-         <Step>
-            <Condition>(request.header.Authorization equals null) and (log.proxyVerb != "OPTIONS")</Condition>
-            <Name>cf-data-validation-Authorization</Name>
          </Step>
          <Step>
             <Condition>(log.proxyVerb != "OPTIONS")</Condition>
             <Name>SF-SpikeArrestCallout-Environment</Name>
          </Step>
          <Step>
-            <Condition>(log.proxyVerb != "OPTIONS") and (request.header.Content-Length != 0)</Condition>
+            <Condition>(log.proxyVerb != "OPTIONS") and (log.proxyVerb != "GET") and (request.header.Content-Length != 0)</Condition>
             <Name>SF-JSONThreatValidation</Name>
          </Step>
          <Step>
             <Condition>(log.proxyVerb != "OPTIONS")</Condition>
             <Name>SF-ThreatProtection</Name>
-         </Step>
-         <Step>
-            <Condition>(log.proxyVerb != "OPTIONS")</Condition>
-            <Name>SF-Validate-Access-Token</Name>
          </Step>
       </Request>
       <Response>
@@ -79,7 +64,7 @@
             </Step>
          </Request>
          <Response/>
-         <Condition>(log.proxyVerb != "OPTIONS") and (!(log.Accept JavaRegex "(text\/xml)(;.*)|(.*;)(text\/xml)(;.*)|text\/xml|(.*;)(text\/xml)|(application\/xml)(;.*)|(.*;)(application\/xml)(;.*)|application\/xml|(.*;)(application\/xml)|(application\/json)(;.*)|(.*;)(application\/json)(;.*)|application\/json|(.*;)(application\/json)"))</Condition>
+         <Condition>(log.proxyVerb != "OPTIONS") and (log.proxyVerb != "GET") and (!(log.Accept JavaRegex "(text\/xml)(;.*)|(.*;)(text\/xml)(;.*)|text\/xml|(.*;)(text\/xml)|(application\/xml)(;.*)|(.*;)(application\/xml)(;.*)|application\/xml|(.*;)(application\/xml)|(application\/json)(;.*)|(.*;)(application\/json)(;.*)|application\/json|(.*;)(application\/json)"))</Condition>
       </Flow>
       <Flow name="WrongContentType">
          <Description/>
@@ -92,32 +77,22 @@
             </Step>
          </Request>
          <Response/>
-         <Condition>(log.proxyVerb != "OPTIONS") and ((!(request.content = "")) and (!(request.content is null)) and !(log.Content-Type JavaRegex "(text\/xml)(;.*)|(.*;)(text\/xml)(;.*)|text\/xml|(.*;)(text\/xml)|(application\/xml)(;.*)|(.*;)(application\/xml)(;.*)|application\/xml|(.*;)(application\/xml)|(application\/json)(;.*)|(.*;)(application\/json)(;.*)|application\/json|(.*;)(application\/json)"))</Condition>
+         <Condition>(log.proxyVerb != "OPTIONS") and (log.proxyVerb != "GET") and ((!(request.content = "")) and (!(request.content is null)) and !(log.Content-Type JavaRegex "(text\/xml)(;.*)|(.*;)(text\/xml)(;.*)|text\/xml|(.*;)(text\/xml)|(application\/xml)(;.*)|(.*;)(application\/xml)(;.*)|application\/xml|(.*;)(application\/xml)|(application\/json)(;.*)|(.*;)(application\/json)(;.*)|application\/json|(.*;)(application\/json)"))</Condition>
       </Flow>
-      <Flow name="UntitledRequest">
+      <Flow name="reqresgetcall">
          <Request>
             <Step>
-               <Name>SF-Proxy-Current-Flow-Name</Name>
-            </Step>
-            <Step>
-               <Condition>(request.header.Content-Length equals 0) and (request.verb!= "GET") and (request.verb!= "DELETE")</Condition>
-               <Name>cf-data-validation-payload</Name>
-            </Step>
-            <Step>
-               <Name>cf-Assign-Routing-Variables-UntitledRequest</Name>
+               <Name>cf-Assign-Routing-Variables-reqresgetcall</Name>
             </Step>
          </Request>
          <Response>
          </Response>
-         <Condition>(proxy.pathsuffix MatchesPath &quot;/users&quot;) and (request.verb= &quot;GET&quot;)</Condition>
+         <Condition>(proxy.pathsuffix MatchesPath &quot;/api/users&quot;) and (request.verb= &quot;GET&quot;)</Condition>
       </Flow>
       <!-- CORS Preflight flow-->
       <Flow name="CORS">
          <Description/>
          <Request>
-            <Step>
-               <Name>SF-Proxy-Current-Flow-Name</Name>
-            </Step>
             <Step>
                <Name>cf-getCORSDomainList</Name>
             </Step>
@@ -132,9 +107,6 @@
       <Flow name="unknown-resource">
          <Request>
             <Step>
-               <Name>SF-Proxy-Current-Flow-Name</Name>
-            </Step>
-            <Step>
                <Name>cf-Unknown-Resource</Name>
             </Step>
          </Request>
@@ -145,18 +117,10 @@
       <Request></Request>
       <Response>
          <Step>
-		    <Condition>(request.verb != "OPTIONS")</Condition>
-            <Name>cf-getCORSDomainList</Name>
-         </Step>
-         <Step>
-			<Condition>(request.verb != "OPTIONS")</Condition>
-            <Name>cf-CORSValidation</Name>
-         </Step>
-         <Step>
             <Name>SF-Log-Collector</Name>
          </Step>
          <Step>
-            <Name>cf-Custom-Statistics-Collector</Name>
+            <Name>SF-Compliance-Callout</Name>
          </Step>
       </Response>
    </PostFlow>
@@ -166,14 +130,15 @@
         </Response>
     </PostClientFlow>
    <HTTPProxyConnection>
-      <BasePath>/api</BasePath>
-      <VirtualHost>tonikvirtualhosthttps</VirtualHost>
+      <BasePath>/api/users</BasePath>
+      <VirtualHost>default</VirtualHost>
+      <VirtualHost>secure</VirtualHost>
    </HTTPProxyConnection>
    <RouteRule name="NoRoute">
-        <Condition>(request.verb == "OPTIONS")</Condition>
+      <Condition>(request.verb == "OPTIONS")</Condition>
    </RouteRule>
-   <RouteRule name="Reqres">
-      <Condition>(target.route.service = &quot;Reqres&quot;)</Condition>
-      <TargetEndpoint>Reqres</TargetEndpoint>
+   <RouteRule name="reqres">
+      <Condition>(target.route.service = &quot;reqres&quot;)</Condition>
+      <TargetEndpoint>reqres</TargetEndpoint>
    </RouteRule>
 </ProxyEndpoint>

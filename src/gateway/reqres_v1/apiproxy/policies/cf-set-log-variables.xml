@@ -3,7 +3,7 @@
     <DisplayName>cf-set-log-variables</DisplayName>
     <Properties/>
     <AssignVariable>
-        <Name>tonik.metadata.log.everything</Name>
+        <Name>metadata.log.everything</Name>
         <Value>true</Value>
         <Ref/>
     </AssignVariable>

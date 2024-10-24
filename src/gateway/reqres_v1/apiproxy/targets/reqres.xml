@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TargetEndpoint name="Reqres">
-    <Description>Reqres</Description>
+<TargetEndpoint name="reqres">
+    <Description>reqres</Description>
 	<FaultRules>
 	</FaultRules>
 	<DefaultFaultRule>
@@ -21,8 +21,8 @@
         <Response/>
     </PreFlow>
 	<Flows>
-        <Flow name="Untitled Request">
-        	<Condition>(targetOperation = &quot;Untitled Request&quot;)</Condition>
+        <Flow name="reqres get call">
+        	<Condition>(targetOperation = &quot;reqres get call&quot;)</Condition>
 			<Request>
 			</Request>   
 			<Response>
@@ -43,10 +43,10 @@
     </PostFlow>
     <HTTPTargetConnection>
     	<LoadBalancer>
-            <Server name="Tonik-Reqres">
+            <Server name="reqres">
                 <IsEnabled>true</IsEnabled>
             </Server>
         </LoadBalancer>
-        <Path>{targetBasePath}</Path>
+        <Path>/api/users</Path>
     </HTTPTargetConnection>
 </TargetEndpoint>

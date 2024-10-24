@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="cf-Assign-Routing-Variables-UntitledRequest">
+<AssignMessage async="false" continueOnError="false" enabled="true" name="cf-Assign-Routing-Variables-reqresgetcall">
     <!-- Target Service name -->
     <AssignVariable>
         <Name>target.route.service</Name>
-        <Value>Reqres</Value>
+        <Value>reqres</Value>
     </AssignVariable>
     <!-- Target Action name -->
     <AssignVariable>
         <Name>targetOperation</Name>
-        <Value>Untitled Request</Value>
+        <Value>reqres get call</Value>
     </AssignVariable>
     <!-- Target Base Path -->
     <AssignVariable>
