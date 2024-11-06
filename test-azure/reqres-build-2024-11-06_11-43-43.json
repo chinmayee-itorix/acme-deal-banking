@@ -1,0 +1,189 @@
+{
+  "id" : "672b56556efb696ec7b538fc",
+  "cts" : 1730893397301,
+  "createdUserName" : "divakar v",
+  "mts" : 1730893397301,
+  "swaggerId" : "b5dc3f2df42f4056b5bf15566c62dd40",
+  "swaggerName" : "reqres",
+  "oasVersion" : "",
+  "swaggerRevision" : 1,
+  "apiId" : "672b51591bbcb35aa75c23a4",
+  "revisionId" : "672b56556efb696ec7b538fd",
+  "name" : "reqres",
+  "displayName" : "reqres",
+  "description" : "",
+  "apiRevision" : 1,
+  "apiVersion" : 1,
+  "protocols" : [ "https" ],
+  "serviceUrl" : "https://reqres.in/api/users",
+  "path" : "/api/users",
+  "subscriptionKeyParameterNames" : {
+    "header" : "Ocp-Apim-Subscription-Key",
+    "query" : "subscription-key"
+  },
+  "subscriptionRequired" : false,
+  "contact" : {
+    "email" : "apiteam@swagger.io"
+  },
+  "license" : {
+    "name" : "Apache 2.0",
+    "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+  },
+  "termsOfServiceUrl" : "http://swagger.io/terms/",
+  "tags" : [ ],
+  "products" : [ ],
+  "isCurrent" : true,
+  "isOnline" : true,
+  "apiOperations" : [ {
+    "name" : "reqres-get-call",
+    "displayName" : "reqres get call",
+    "method" : "get",
+    "urlTemplate" : "/api/users",
+    "templateParameters" : [ ],
+    "description" : "",
+    "request" : { },
+    "responses" : [ ],
+    "policies" : [ {
+      "name" : "Check HTTP header",
+      "description" : "Gets the authorization context of a specified authorization configured in the API Management instance.",
+      "scope" : [ "GLOBAL", "PRODUCT", "API", "OPERATION" ],
+      "supportedScope" : [ "GLOBAL", "PRODUCT", "API", "OPERATION" ],
+      "section" : [ "INBOUND" ],
+      "supportedSection" : [ "INBOUND" ],
+      "useDefault" : false,
+      "policyElements" : [ {
+        "name" : "check-header",
+        "description" : "Use the check-header policy to enforce that a request has a specified HTTP header. You can optionally check to see if the header has a specific value or one of a range of allowed values. If the check fails, the policy terminates request processing and returns the HTTP status code and error message specified by the policy.",
+        "multiple" : false,
+        "addablePolicies" : false,
+        "policyElementAttributes" : [ {
+          "name" : "name",
+          "description" : "The name of the HTTP header to check. Policy expressions are allowed.",
+          "value" : "x-tenanr",
+          "valueType" : "STRING",
+          "options" : [ ],
+          "defaultValue" : "header name"
+        }, {
+          "name" : "failed-check-httpcode",
+          "description" : "HTTP status code to return if the header doesn't exist or has an invalid value. Policy expressions are allowed.",
+          "value" : "200",
+          "valueType" : "STRING",
+          "options" : [ ],
+          "defaultValue" : "code"
+        }, {
+          "name" : "failed-check-error-message",
+          "description" : "Error message to return in the HTTP response body if the header doesn't exist or has an invalid value. This message must have any special characters properly escaped. Policy expressions are allowed.",
+          "value" : "message",
+          "valueType" : "STRING",
+          "options" : [ ],
+          "defaultValue" : "message"
+        }, {
+          "name" : "ignore-case",
+          "description" : "Boolean. If set to true, case is ignored when the header value is compared against the set of acceptable values. Policy expressions are allowed.",
+          "value" : "false",
+          "valueType" : "OPTIONS",
+          "options" : [ "true", "false" ],
+          "defaultValue" : ""
+        } ],
+        "policyElements" : [ {
+          "name" : "value",
+          "description" : "Add one or more of these elements to specify allowed HTTP header values. When multiple value elements are specified, the check is considered a success if any one of the values is a match.",
+          "value" : "123",
+          "valueType" : "STRING",
+          "multiple" : true,
+          "addablePolicies" : false,
+          "policyElementAttributes" : [ ],
+          "policyElements" : [ ],
+          "requiredPolicyElements" : [ ],
+          "requiredPolicyElementAttributes" : [ ]
+        } ],
+        "requiredPolicyElements" : [ ],
+        "requiredPolicyElementAttributes" : [ ]
+      } ]
+    } ],
+    "tags" : [ ]
+  } ],
+  "policies" : [ {
+    "name" : "Check HTTP header",
+    "description" : "Gets the authorization context of a specified authorization configured in the API Management instance.",
+    "scope" : [ "GLOBAL", "PRODUCT", "API", "OPERATION" ],
+    "supportedScope" : [ "GLOBAL", "PRODUCT", "API", "OPERATION" ],
+    "section" : [ "INBOUND" ],
+    "supportedSection" : [ "INBOUND" ],
+    "useDefault" : false,
+    "policyElements" : [ {
+      "name" : "check-header",
+      "description" : "Use the check-header policy to enforce that a request has a specified HTTP header. You can optionally check to see if the header has a specific value or one of a range of allowed values. If the check fails, the policy terminates request processing and returns the HTTP status code and error message specified by the policy.",
+      "multiple" : false,
+      "addablePolicies" : false,
+      "policyElementAttributes" : [ {
+        "name" : "name",
+        "description" : "The name of the HTTP header to check. Policy expressions are allowed.",
+        "value" : "x-tenanr",
+        "valueType" : "STRING",
+        "options" : [ ],
+        "defaultValue" : "header name"
+      }, {
+        "name" : "failed-check-httpcode",
+        "description" : "HTTP status code to return if the header doesn't exist or has an invalid value. Policy expressions are allowed.",
+        "value" : "200",
+        "valueType" : "STRING",
+        "options" : [ ],
+        "defaultValue" : "code"
+      }, {
+        "name" : "failed-check-error-message",
+        "description" : "Error message to return in the HTTP response body if the header doesn't exist or has an invalid value. This message must have any special characters properly escaped. Policy expressions are allowed.",
+        "value" : "message",
+        "valueType" : "STRING",
+        "options" : [ ],
+        "defaultValue" : "message"
+      }, {
+        "name" : "ignore-case",
+        "description" : "Boolean. If set to true, case is ignored when the header value is compared against the set of acceptable values. Policy expressions are allowed.",
+        "value" : "false",
+        "valueType" : "OPTIONS",
+        "options" : [ "true", "false" ],
+        "defaultValue" : ""
+      } ],
+      "policyElements" : [ {
+        "name" : "value",
+        "description" : "Add one or more of these elements to specify allowed HTTP header values. When multiple value elements are specified, the check is considered a success if any one of the values is a match.",
+        "value" : "123",
+        "valueType" : "STRING",
+        "multiple" : true,
+        "addablePolicies" : false,
+        "policyElementAttributes" : [ ],
+        "policyElements" : [ ],
+        "requiredPolicyElements" : [ ],
+        "requiredPolicyElementAttributes" : [ ]
+      } ],
+      "requiredPolicyElements" : [ ],
+      "requiredPolicyElementAttributes" : [ ]
+    } ]
+  } ],
+  "connector" : {
+    "id" : "6720aefa091f397118685a58",
+    "cts" : 1730195194741,
+    "createdUserName" : "divakar v",
+    "mts" : 1730195194741,
+    "connectorName" : "testting",
+    "managementHost" : "azure-gw-connector.management.azure-api.net",
+    "gatewayHost" : "azure-gw-connector.azure-api.net",
+    "subscriptionId" : "6d8660f0-3483-4af2-8690-c22e1e15f4c8",
+    "resourceGroup" : "ui-testing",
+    "serviceName" : "azure-gw-connector"
+  },
+  "enableScmUpload" : true,
+  "scmUpload" : {
+    "repoName" : "acme-deal-banking",
+    "branch" : "master",
+    "hostUrl" : "https://github.com/chinmayee-itorix/acme-deal-banking.git",
+    "folderName" : "test-azure",
+    "commitMessage" : "testing",
+    "scmSource" : "git",
+    "password" : "",
+    "authType" : "token"
+  },
+  "apiDefinitions" : [ ],
+  "schemaId" : "reqres"
+}
