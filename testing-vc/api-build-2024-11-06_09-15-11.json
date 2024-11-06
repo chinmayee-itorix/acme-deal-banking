@@ -1,0 +1,148 @@
+{
+  "id" : "672b339d1bbcb35aa75c2375",
+  "cts" : 1730884509597,
+  "createdUserName" : "divakar v",
+  "mts" : 1730884509597,
+  "swaggerId" : "e0c5b26745e941a38ca091872128d955",
+  "swaggerName" : "UsersAPI",
+  "oasVersion" : "",
+  "swaggerRevision" : 1,
+  "apiId" : "672b17db1bbcb35aa75c236f",
+  "revisionId" : "672b339d1bbcb35aa75c2376",
+  "name" : "api",
+  "displayName" : "api",
+  "description" : "",
+  "apiRevision" : 1,
+  "apiVersion" : 1,
+  "protocols" : [ "https" ],
+  "serviceUrl" : "https://mock.apiwiz.io/1",
+  "path" : "/v1/users/1",
+  "subscriptionKeyParameterNames" : {
+    "header" : "Ocp-Apim-Subscription-Key",
+    "query" : "subscription-key"
+  },
+  "subscriptionRequired" : false,
+  "contact" : {
+    "email" : "apiteam@swagger.io"
+  },
+  "license" : {
+    "name" : "Apache 2.0",
+    "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+  },
+  "termsOfServiceUrl" : "http://swagger.io/terms/",
+  "tags" : [ ],
+  "products" : [ ],
+  "isCurrent" : true,
+  "isOnline" : true,
+  "apiOperations" : [ {
+    "name" : "get-searchproducts",
+    "displayName" : "get-searchproducts",
+    "method" : "get",
+    "urlTemplate" : "/{id}",
+    "templateParameters" : [ {
+      "description" : "",
+      "name" : "id",
+      "required" : true,
+      "values" : [ ]
+    } ],
+    "description" : "",
+    "request" : { },
+    "responses" : [ ],
+    "policies" : [ {
+      "name" : "base",
+      "description" : "Inherit tag",
+      "scope" : [ "PRODUCT", "API", "OPERATION" ],
+      "supportedScope" : [ "PRODUCT", "API", "OPERATION" ],
+      "section" : [ "INBOUND", "OUTBOUND", "BACKEND", "ON_ERROR" ],
+      "supportedSection" : [ "INBOUND", "OUTBOUND", "BACKEND", "ON_ERROR" ],
+      "useDefault" : false,
+      "policyElements" : [ {
+        "name" : "base",
+        "description" : "Inheritance tag",
+        "multiple" : false,
+        "addablePolicies" : false,
+        "policyElementAttributes" : [ ],
+        "policyElements" : [ ],
+        "selectedPolicyElements" : [ ],
+        "requiredPolicyElements" : [ ],
+        "requiredPolicyElementAttributes" : [ ]
+      } ]
+    } ],
+    "tags" : [ ]
+  }, {
+    "name" : "SingleProduct",
+    "displayName" : "SingleProduct",
+    "method" : "get",
+    "urlTemplate" : "/",
+    "templateParameters" : [ ],
+    "description" : "",
+    "request" : { },
+    "responses" : [ ],
+    "policies" : [ {
+      "name" : "base",
+      "description" : "Inherit tag",
+      "scope" : [ "PRODUCT", "API", "OPERATION" ],
+      "supportedScope" : [ "PRODUCT", "API", "OPERATION" ],
+      "section" : [ "INBOUND", "OUTBOUND", "BACKEND", "ON_ERROR" ],
+      "supportedSection" : [ "INBOUND", "OUTBOUND", "BACKEND", "ON_ERROR" ],
+      "useDefault" : false,
+      "policyElements" : [ {
+        "name" : "base",
+        "description" : "Inheritance tag",
+        "multiple" : false,
+        "addablePolicies" : false,
+        "policyElementAttributes" : [ ],
+        "policyElements" : [ ],
+        "selectedPolicyElements" : [ ],
+        "requiredPolicyElements" : [ ],
+        "requiredPolicyElementAttributes" : [ ]
+      } ]
+    } ],
+    "tags" : [ ]
+  } ],
+  "policies" : [ {
+    "name" : "base",
+    "description" : "Inherit tag",
+    "scope" : [ "PRODUCT", "API", "OPERATION" ],
+    "supportedScope" : [ "PRODUCT", "API", "OPERATION" ],
+    "section" : [ "INBOUND", "OUTBOUND", "BACKEND", "ON_ERROR" ],
+    "supportedSection" : [ "INBOUND", "OUTBOUND", "BACKEND", "ON_ERROR" ],
+    "useDefault" : false,
+    "policyElements" : [ {
+      "name" : "base",
+      "description" : "Inheritance tag",
+      "multiple" : false,
+      "addablePolicies" : false,
+      "policyElementAttributes" : [ ],
+      "policyElements" : [ ],
+      "selectedPolicyElements" : [ ],
+      "requiredPolicyElements" : [ ],
+      "requiredPolicyElementAttributes" : [ ]
+    } ]
+  } ],
+  "connector" : {
+    "id" : "6720aefa091f397118685a58",
+    "cts" : 1730195194741,
+    "createdUserName" : "divakar v",
+    "mts" : 1730195194741,
+    "connectorName" : "testting",
+    "managementHost" : "azure-gw-connector.management.azure-api.net",
+    "gatewayHost" : "azure-gw-connector.azure-api.net",
+    "subscriptionId" : "6d8660f0-3483-4af2-8690-c22e1e15f4c8",
+    "resourceGroup" : "ui-testing",
+    "serviceName" : "azure-gw-connector"
+  },
+  "enableScmUpload" : true,
+  "scmUpload" : {
+    "repoName" : "acme-deal-banking",
+    "branch" : "master",
+    "hostUrl" : "https://github.com/chinmayee-itorix/acme-deal-banking.git",
+    "folderName" : "testing-vc",
+    "commitMessage" : "testingg",
+    "scmSource" : "git",
+    "password" : "",
+    "authType" : "token"
+  },
+  "apiDefinitions" : [ ],
+  "schemaId" : "api"
+}
